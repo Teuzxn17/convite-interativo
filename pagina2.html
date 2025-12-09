@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página 2</title>
+
+<style>
+body {
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Grade dos botões embaixo */
+.botoes {
+    position: absolute;
+    bottom: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.botao {
+    width: 18%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255,255,255,0);
+    border: none;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <img src="Alissa.png">
+
+    <div class="botoes">
+
+        <!-- Informações -->
+        <button class="botao" onclick="alert('Página de informações ainda não criada')"></button>
+
+        <!-- Localização -->
+        <button class="botao" onclick="window.location.href='https://maps.app.goo.gl/y3qpnJiirDuPKuLy7'"></button>
+
+        <!-- Confirmação WhatsApp -->
+        <button class="botao" onclick="window.location.href='https://wa.me/5591988300918?text=Ol%C3%A1,+quero+confirmar+minha+presen%C3%A7a+na+festa+de+15+anos+da+Mika.+Meu+nome+%C3%A9'":></button>
+
+        <!-- Lista de presentes -->
+        <button class="botao" onclick="window.location.href='presentes.html'"></button>
+
+    </div>
+</div>
+
+</body>
+</html>

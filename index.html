@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite</title>
+
+<style>
+body {
+    margin: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+/* container principal */
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* carta estática */
+.carta {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* brilho suave */
+@keyframes glow {
+    from { filter: drop-shadow(0 0 0px #ffd8a0); }
+    to   { filter: drop-shadow(0 0 14px #ffebb8); }
+}
+
+/* vídeo da animação */
+#videoAnimacao {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
+}
+
+/* partículas mágicas */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #ffdca8;
+    border-radius: 50%;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px #ffe3b8);
+    animation: floatUp 2s linear infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-150px) scale(0.4);
+        opacity: 0;
+    }
+}
+
+/* fade para a troca de página */
+.fadeOut {
+    animation: fade 1.3s forwards;
+}
+
+@keyframes fade {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- som de magia -->
+<audio id="somMagia" src="magia.mp3"></audio>
+
+<div class="container">
+
+    <!-- carta fechada (clicável) -->
+    <img src="card.jpg" class="carta" id="cartaBtn">
+
+    <!-- vídeo da carta abrindo -->
+    <video id="videoAnimacao" src="animacao.mp4"></video>
+
+</div>
+
+<script>
+/* elementos */
+let carta = document.getElementById("cartaBtn");
+let video = document.getElementById("videoAnimacao");
+let som = document.getElementById("somMagia");
+
+/* criar partículas */
+function criarParticulas() {
+    for (let i = 0; i < 18; i++) {
+        let p = document.createElement("div");
+        p.classList.add("particle");
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.bottom = "0px";
+        p.style.animationDelay = Math.random() * 2 + "s";
+        document.body.appendChild(p);
+
+        setTimeout(() => p.remove(), 2000);
+    }
+}
+
+/* clique na carta */
+carta.addEventListener("click", () => {
+    som.play();       // som mágico
+    criarParticulas();// partículas mágicas
+
+    carta.style.display = "none"; // esconder carta
+    video.style.display = "block"; // mostrar animação
+    video.play(); // iniciar vídeo
+
+    video.onended = () => {
+        document.body.classList.add("fadeOut");
+        setTimeout(() => {
+            window.location.href = "pagina2.html";
+        }, 1200);
+    };
+});
+</script>
+
+</body>
+</html>
