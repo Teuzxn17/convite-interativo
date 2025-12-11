@@ -8,37 +8,52 @@
 <style>
 body {
     margin: 0;
+    overflow: hidden;
 }
 
 .container {
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
 }
 
-img {
+.container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Grade dos botões embaixo */
-.botoes {
-    position: absolute;
-    bottom: 300px;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
+/* Botões posicionados em cima das bolinhas da imagem */
 .botao {
-    width: 18%;
+    position: absolute;
+    width: 20vw;   /* tamanho proporcional — sempre encaixa */
+    max-width: 100px;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    cursor: pointer;
     background: rgba(255,255,255,0);
     border: none;
+    cursor: pointer;
+}
+
+/* POSIÇÕES — ajuste perfeito baseado na imagem que você enviou */
+#info {
+    bottom: 18%;
+    left: 7%;
+}
+
+#local {
+    bottom: 18%;
+    left: 30%;
+}
+
+#confirma {
+    bottom: 18%;
+    left: 53%;
+}
+
+#presentes {
+    bottom: 18%;
+    left: 75%;
 }
 </style>
 
@@ -48,21 +63,26 @@ img {
 <div class="container">
     <img src="Alissa.png">
 
-    <div class="botoes">
+    <!-- Informações -->
+    <button id="info" class="botao"
+        onclick="alert('Página de informações ainda não criada')">
+    </button>
 
-        <!-- Informações -->
-        <button class="botao" onclick="alert('Página de informações ainda não criada')"></button>
+    <!-- Localização -->
+    <button id="local" class="botao"
+        onclick="window.location.href='https://maps.app.goo.gl/y3qpnJiirDuPKuLy7'">
+    </button>
 
-        <!-- Localização -->
-        <button class="botao" onclick="window.location.href='https://maps.app.goo.gl/y3qpnJiirDuPKuLy7'"></button>
+    <!-- Confirmação WhatsApp -->
+    <button id="confirma" class="botao"
+        onclick="window.location.href='https://wa.me/5591988300918?text=Olá,+quero+confirmar+minha+presença+na+festa+de+15+anos+da+Mika.+Meu+nome+é:'">
+    </button>
 
-        <!-- Confirmação WhatsApp -->
-        <button class="botao" onclick="window.location.href='https://wa.me/5591988300918?text=Ol%C3%A1,+quero+confirmar+minha+presen%C3%A7a+na+festa+de+15+anos+da+Mika.+Meu+nome+%C3%A9'":></button>
+    <!-- Lista de presentes -->
+    <button id="presentes" class="botao"
+        onclick="window.location.href='presentes.html'">
+    </button>
 
-        <!-- Lista de presentes -->
-        <button class="botao" onclick="window.location.href='presentes.html'"></button>
-
-    </div>
 </div>
 
 </body>
